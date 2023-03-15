@@ -103,15 +103,16 @@ header {
   flex: none; /*.flex-none*/
   order: 2;
   flex-grow: 0;
-  position:relative;
+  position: relative;
 }
 
 .basket__number-value {
   position: absolute;
   width: 24px;
   height: 24px;
-  left: 7px;
-  top: -14px;
+  left: 9px;
+  top: -4px;
+  font-size: 10px;
   color: var(--white);
 }
 
@@ -208,7 +209,7 @@ main {
 }
 
 .info__quantity--stock {
-  width: 73px;
+  width: 80px;
   height: 12px;
   color: var(--shade);
   flex: none; /*.flex-none*/
@@ -227,6 +228,12 @@ main {
   flex: none; /*.flex-none*/
   order: 1;
   flex-grow: 0;
+}
+
+.controls__number {
+  width: 9px;
+  height: 24px;
+  margin-top: -1px;
 }
 
 .controls__button {
@@ -250,26 +257,36 @@ main {
   border-color: var(--primary2);
 }
 
+.controls__button:hover,
+.controls__button:active > svg {
+  stroke: var(--white);
+  fill: var(--white);
+}
+
 .controls__button:disabled {
   background-color: transparent;
   border-color: var(--shade);
 }
 
-.controls__button:visited{
-  border-color:var(--primary2);
+.controls__button:disabled > svg {
+  stroke: var(--shade);
+  fill: var(--shade);
 }
 
-.controls__button--minus {
+.controls__button:visited {
+  border-color: var(--primary2);
+}
+
+.controls__button--minus > svg {
   position: absolute;
   left: 20.83%;
   right: 20.83%;
   top: 45.83%;
   bottom: 45.83%;
   pointer-events: inherit;
-  background-image: url('./images/minus-button.svg');
 }
 
-.controls__button--plus {
+.controls__button--plus > svg {
   position: absolute;
   left: 20.83%;
   right: 20.83%;

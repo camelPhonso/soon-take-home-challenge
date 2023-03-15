@@ -35,7 +35,7 @@
 }
 
 /* inside auto layout */
-.flex-none{
-    flex:none;
-    flex-grow:0;
+.flex-none {
+  flex: none;
+  flex-grow: 0;
 }
