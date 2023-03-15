@@ -42,27 +42,14 @@ header {
   width: 75px;
   height: 28px;
   color: var(--shade);
-  flex: none; /*.flex-none*/
   order: 0;
-  flex-grow: 0;
 }
 
 .title__challenge-name {
   width: 119px;
   height: 28px;
   color: var(--black);
-  flex: none; /*.flex-none*/
   order: 1;
-  flex-grow: 0;
-}
-
-.header__0 {
-  display: none;
-  width: 9px;
-  height: 24px;
-  flex: none; /*.flex-none*/
-  order: 0;
-  flex-grow: 0;
 }
 
 .basket {
@@ -100,9 +87,7 @@ header {
   height: 24px;
   background: var(--shade);
   border-radius: 48px;
-  flex: none; /*.flex-none*/
   order: 2;
-  flex-grow: 0;
   position: relative;
 }
 
@@ -141,8 +126,6 @@ main {
 }
 
 /* product info section */
-
-/* info section -  product details */
 .info {
   display: flex;
   flex-direction: column;
@@ -164,34 +147,26 @@ main {
   padding: 0px;
   width: 588px;
   height: 256px;
-  flex: none; /*.flex-none*/
   order: 0;
-  flex-grow: 0;
 }
 
 .info__details--name {
   width: 588px;
   height: 40px;
-  flex: none; /*.flex-none*/
   order: 0;
   align-self: stretch;
-  flex-grow: 0;
 }
 
 .info__details--description {
   width: 588px;
   height: 144px;
-  flex: none; /*.flex-none*/
   order: 1;
   align-self: stretch;
-  flex-grow: 0;
 }
 
 .info__details--cost {
-  flex: none; /*.flex-none*/
   order: 2;
   align-self: stretch;
-  flex-grow: 0;
 }
 
 /* info section - stock information */
@@ -203,18 +178,14 @@ main {
   gap: 24px;
   width: 121px;
   height: 68px;
-  flex: none; /*.flex-none*/
   order: 1;
-  flex-grow: 0;
 }
 
 .info__quantity--stock {
   width: 80px;
   height: 12px;
   color: var(--shade);
-  flex: none; /*.flex-none*/
   order: 0;
-  flex-grow: 0;
 }
 
 .info__quantity--controls {
@@ -225,9 +196,7 @@ main {
   gap: 24px;
   width: 121px;
   height: 32px;
-  flex: none; /*.flex-none*/
   order: 1;
-  flex-grow: 0;
 }
 
 .controls__number {
@@ -236,18 +205,18 @@ main {
   margin-top: -1px;
 }
 
+/* buttons with icons // user selection buttons */
 .controls__button {
   background: none;
   border: 1px solid var(--primary2);
   border-radius: 50px;
   width: 24px;
   height: 24px;
-  flex: none; /*.flex-none*/
   order: 0;
-  flex-grow: 0;
   position: relative;
 }
 
+/* buttons with icons - altered states */
 .controls__button:active {
   background-color: var(--primary3);
 }
@@ -297,11 +266,10 @@ main {
 .controls--number {
   width: 9px;
   height: 24px;
-  flex: none; /*.flex-none*/
   order: 1;
-  flex-grow: 0;
 }
 
+/* button with text // add to basket button */
 .button-w-text {
   display: flex;
   flex-direction: row;
@@ -312,12 +280,11 @@ main {
   width: 145px;
   height: 36px;
   border-radius: 48px;
-  flex: none; /*.flex-none*/
   order: 2;
-  flex-grow: 0;
   border: 1px solid var(--primary3);
 }
 
+/* button with text - alteret states */
 .button-w-text:hover {
   background-color: transparent;
   color: var(--primary2);

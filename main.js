@@ -1,10 +1,14 @@
 //item objects
 class storeItem {
+  // for this MVP the class is instantiated once for each item in the basket
+  // a long-term solution, should see a counter paired to a single object
+  // for each product type added to the basket
   constructor(name, price) {
     this.name = name;
     this.price = price;
   }
   addToBasket() {
+    let basketContents = getBasketFromStorage();
     basketContents.push(this);
     setBasketToStorage(basketContents);
   }
@@ -12,6 +16,8 @@ class storeItem {
 
 // available stock
 const waxedCottonHoodedJacket = {
+  //for the purposes of this exercise, a simple object was created
+  //where there would likely be an API call to the catalogue & stock information
   price: 650.0,
   quantity: 10,
 };
@@ -28,8 +34,6 @@ function getBasketFromStorage() {
   return JSON.parse(storedItems);
 }
 
-let basketContents = getBasketFromStorage();
-
 // update basket on navbar ///////////////////////////////
 /////////////////////////////////////////////////////////
 function fillBasketTotalDisplay(color) {
@@ -38,7 +42,9 @@ function fillBasketTotalDisplay(color) {
 }
 
 function displayBasketTally() {
+  let basketContents = getBasketFromStorage();
   let basketTally = document.querySelector(".basket__number-value");
+
   basketTally.textContent = basketContents.length;
   basketTally.textContent >= 1
     ? fillBasketTotalDisplay("#3F51B5")
@@ -50,7 +56,6 @@ function displayBasketTally() {
 
 // disable buttons in response to stock levels
 function disableSelectionButtons() {
-  // this function is called later in response to stock changes
   let minusButton = document.querySelector(".controls__button--minus");
   let submitButton = document.querySelector(".add-button");
 
@@ -59,7 +64,6 @@ function disableSelectionButtons() {
 }
 
 function enableSelectionButtons() {
-  // this function is called later in response to stock changes
   let minusButton = document.querySelector(".controls__button--minus");
   let submitButton = document.querySelector(".add-button");
 
@@ -68,7 +72,6 @@ function enableSelectionButtons() {
 }
 
 function disableAllStockInteraction() {
-  // this function is called later in response to stock changes
   let minusButton = document.querySelector(".controls__button--minus");
   let plusButton = document.querySelector(".controls__button--plus");
   let submitButton = document.querySelector(".add-button");
@@ -83,42 +86,46 @@ function disableAllStockInteraction() {
 
 // update stock count /////////////////////////////////
 //////////////////////////////////////////////////////
+// display the number of items selected by the user
+function displayUserSelection(number=1){
+  let userSelection = document.querySelector('.controls__number');
+  userSelection.value = number;
+  userSelection.textContent = number;
+}
 
 // evaluate and adjust the number of items selected by the user
 function addToUserSelection() {
   let { quantity: stockCount } = waxedCottonHoodedJacket;
-  let userSelection = document.querySelector(".controls__number");
-  let count = userSelection.value;
+  let count = document.querySelector(".controls__number").value;
+  let alertMessage = `only ${stockCount} units available of this item`;
 
-  if (count > stockCount)
-    return window.alert(`only ${stockCount} available of this product`);
+  if (count >= stockCount) return window.alert(alertMessage);
   count++;
-  userSelection.textContent = count;
-  userSelection.value = count;
+  displayUserSelection(count);
   if (count === 1) return enableSelectionButtons();
 }
 
 function subtractFromUserSelection() {
-  let userSelection = document.querySelector(".controls__number");
-  let count = userSelection.value;
-
+  let count = document.querySelector(".controls__number").value;
+  
   count--;
-  userSelection.textContent = count;
-  userSelection.value = count;
+  displayUserSelection(count);
   if (count === 0) return disableSelectionButtons();
 }
 
 // evaluate and display the current stock available
 function displayStockCount() {
-  let stockCountDisplay = document.querySelector(".info__quantity--stock");
   let { quantity: stockCount } = waxedCottonHoodedJacket;
-  stockCountDisplay.textContent = `${stockCount} in stock`;
   if (stockCount === 0) return disableAllStockInteraction();
+
+  let stockCountDisplay = document.querySelector(".info__quantity--stock");
+  stockCountDisplay.textContent = `${stockCount} in stock`;
 }
 
 function adjustStockAvailable() {
   let userSelection = document.querySelector(".controls__number").value;
   let { quantity: stock } = waxedCottonHoodedJacket;
+
   waxedCottonHoodedJacket.quantity = stock - userSelection;
   displayStockCount();
 }
@@ -149,12 +156,14 @@ plusButton.addEventListener("click", () => {
 
 // listen to 'minus button'
 let minusButton = document.querySelector(".controls__button--minus");
+
 minusButton.addEventListener("click", () => {
   subtractFromUserSelection();
 });
 
 // listen to 'add to basket button'
 let submitButton = document.querySelector(".add-button");
+
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   adjustStockAvailable();
@@ -164,9 +173,7 @@ submitButton.addEventListener("click", (e) => {
 // initialise the page ////////////////////////
 //////////////////////////////////////////////
 function renderPage() {
-  let currentUserSelection = document.querySelector(".controls__number");
-  currentUserSelection.value = 1;
-
+  displayUserSelection();
   displayBasketTally();
   displayStockCount();
 }
