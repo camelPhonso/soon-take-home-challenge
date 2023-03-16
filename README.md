@@ -66,7 +66,8 @@ fairly clear way and the README should clarify my approach to the challenge.
 
 ## The process
 I split my work on this challenge in three parts:
-- recreate the page from the provided Figma screens
+
+ 1. Recreate the page from the provided Figma screens
   - this meant laying out the html and css for the page directly from the 
 directions given wiht the brief. In this process I focused only on 
 obtaining a product as close to the brief as possible while approaching it 
@@ -74,10 +75,13 @@ with semantic HTML in mind and trying to reduce the bulk of CSS by
 utilising fundamentals for repeated setting groups, allowing a shorter CSS 
 and a consistent look.
 
-- give the page functionality with JavaScript
+ 2. Give the page functionality with JavaScript
   - this was obviously the 'free hand' portion of the work. I knew what 
 user flow to complete and could see from the Figma files how the DOM 
 should respond to certain changes, so I just worked from the simplest step 
 (adjusting the product counter when the user interacts witht the "-" and 
 "+" buttons) up to the most complex scenario (what happens if a user tries 
 to add more jackets to the basket than there are in stock?).
+
+ 3. Refactor
+  - I read back on my code and tried to spot small changes that could make it more readable or efficient without changing it's functionality.
