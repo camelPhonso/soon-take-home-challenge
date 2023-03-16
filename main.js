@@ -87,8 +87,8 @@ function disableAllStockInteraction() {
 // update stock count /////////////////////////////////
 //////////////////////////////////////////////////////
 // display the number of items selected by the user
-function displayUserSelection(number=1){
-  let userSelection = document.querySelector('.controls__number');
+function displayUserSelection(number = 1) {
+  let userSelection = document.querySelector(".controls__number");
   userSelection.value = number;
   userSelection.textContent = number;
 }
@@ -107,7 +107,7 @@ function addToUserSelection() {
 
 function subtractFromUserSelection() {
   let count = document.querySelector(".controls__number").value;
-  
+
   count--;
   displayUserSelection(count);
   if (count === 0) return disableSelectionButtons();

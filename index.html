@@ -19,8 +19,13 @@
         <div class="basket__container">
           <img class="basket__vector" src="./images/basket__vector.svg" />
         </div>
-        <div class="basket__number flex-none">
-          <p class="basket__number-value"></p>
+        <div
+          tabindex="0"
+          aria-label="total of items in basket"
+          aria-activedescendant="basket-total"
+          class="basket__number flex-none"
+        >
+          <p id="basket-total" class="basket__number-value"></p>
         </div>
       </div>
       <hr />
@@ -28,16 +33,24 @@
 
     <main>
       <img
+        tabindex="0"
         class="product__image"
         src="./images/product__vector.svg"
         alt="Waxed Cotton Hooded Jacket catalogue example"
       />
       <div class="info">
         <div class="info__details flex-none">
-          <p class="info__details--name flex-none text--headline-1">
+          <p
+            tabindex="0"
+            aria-describedby="info-description"
+            class="info__details--name flex-none text--headline-1"
+          >
             Waxed Cotton Hooded Jacket
           </p>
-          <p class="info__details--description flex-none text--body">
+          <p
+            id="info-description"
+            class="info__details--description flex-none text--body"
+          >
             The Drumming jacket in orange is finished with a water-repellent dry
             wax treatment that creates a love-worn look. It's made in the United
             Kingdom using organic cotton ripstop with a drawstring hood,
@@ -51,8 +64,13 @@
         </div>
         <div class="info__quantity flex-none">
           <p class="info__quantity--stock flex-none text--overline"></p>
-          <div class="info__quantity--controls flex-none">
+          <div
+            aria-label="items selected"
+            class="info__quantity--controls flex-none"
+          >
             <button
+              tabindex="0"
+              aria-label="remove one from your selection"
               type="button"
               class="controls__button flex-none controls__button--minus"
             >
@@ -66,8 +84,16 @@
                 <path id="minusSVG" d="M14 2H0V0H14V2Z" fill="#3f51b5" />
               </svg>
             </button>
-            <p class="controls__number flex-none text--body">1</p>
+            <p
+              tabindex="0"
+              id="total-selected"
+              class="controls__number flex-none text--body"
+            >
+              1
+            </p>
             <button
+              tabindex="0"
+              aria-label="add one to your selection"
               type="button"
               class="button-w-icon controls__button controls__button--plus"
             >
@@ -86,7 +112,11 @@
               </svg>
             </button>
           </div>
-          <button type="submit" class="add-button button-w-text flex-none text--button">
+          <button
+            aria-describedby="total-selected"
+            type="submit"
+            class="add-button button-w-text flex-none text--button"
+          >
             Add to basket
           </button>
         </div>
