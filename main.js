@@ -93,6 +93,15 @@ function displayUserSelection(number = 1) {
   userSelection.textContent = number;
 }
 
+function resetUserSelection(){
+  let userSelection = document.querySelector(".controls__number");
+  let submitButton = document.querySelector('.add-button');
+
+  if(submitButton.disabled) return;
+  userSelection.value = 1;
+  userSelection.textContent = 1;
+}
+
 // evaluate and adjust the number of items selected by the user
 function addToUserSelection() {
   let { quantity: stockCount } = waxedCottonHoodedJacket;
@@ -116,10 +125,10 @@ function subtractFromUserSelection() {
 // evaluate and display the current stock available
 function displayStockCount() {
   let { quantity: stockCount } = waxedCottonHoodedJacket;
-  if (stockCount === 0) return disableAllStockInteraction();
-
+  
   let stockCountDisplay = document.querySelector(".info__quantity--stock");
   stockCountDisplay.textContent = `${stockCount} in stock`;
+  if (stockCount === 0) return disableAllStockInteraction();
 }
 
 function adjustStockAvailable() {
@@ -168,6 +177,7 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   adjustStockAvailable();
   adjustBasketTally();
+  resetUserSelection();
 });
 
 // initialise the page ////////////////////////
